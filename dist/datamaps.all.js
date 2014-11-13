@@ -149,7 +149,7 @@
         var fillColor;
 
         if ( colorCodeData[d.id] ) {
-          fillColor = fillData[ colorCodeData[d.id].fillKey ];
+          fillColor = colorCodeData[d.id].color || fillData[ colorCodeData[d.id].fillKey ];
         }
 
         return fillColor || fillData.defaultFill;
@@ -237,11 +237,11 @@
         if (data.labels && data.labels[fillKey]) {
           label = data.labels[fillKey];
         } else {
-          label= fillKey + ': ';
+          label= ' - ' + fillKey;
         }
       }
-      html += '<dt>' + label + '</dt>';
       html += '<dd style="background-color:' +  this.options.fills[fillKey] + '">&nbsp;</dd>';
+      html += '<dt>' + label + '</dt>';
     }
     html += '</dl>';
 
